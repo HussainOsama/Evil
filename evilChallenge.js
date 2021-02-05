@@ -1,4 +1,4 @@
-let floors = 4; //how many floors
+let floors = 3; //how many floors
 
 buildTower(floors); //function call
 
@@ -35,6 +35,8 @@ function buildTower(nFloors) {
     console.log("You have enter a wrong mu,ber");
   }else{
     let array = createArray(nFloors)
+    let x = doTheTower(array)
+    console.log(x); 
   }
 }
 
@@ -55,20 +57,34 @@ function createArray(nFloors){
 
 
 function doTheTower(array){
+  let lastelement = array[array.length - 1]
   let newArray = array.map(element => {
     let star = ''
+    let empty = createSpaces(lastelement -element)
     for(i=0 ; i < element ; i++ ){
       star = star + '*'
     }
-    return star
+    return `${empty}${star}${empty}`
   });
   return newArray
 }
 
 
+function createSpaces(num){
+  var myString = '';
+  for (var i = 0; i < num/2; ++i) {
+    myString += ' ';
+  }
+  return `${myString}`
+}
 
-console.log(doTheTower([ 1, 3, 5, 7, 9, 11, 13]));
 
-console.log(createArray(6));
 
-console.log(doTheTower([ 1, 3, 5, 7, 9, 11 ]));
+// console.log(createSpaces(2));
+
+
+// console.log(doTheTower([ 1, 3, 5, 7, 9, 11, 13]));
+
+// console.log(createArray(6));
+
+// console.log(doTheTower([ 1, 3, 5, 7, 9, 11 ]));
